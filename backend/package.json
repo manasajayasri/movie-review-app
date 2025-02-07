@@ -1,0 +1,22 @@
+{
+  "name": "review_backend_api",
+  "version": "1.0.0",
+  "description": "A unique moview review application using MERN Stack.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manasajayasri/movie-review-app.git"
+  },
+  "author": "Manasa Jayasri",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manasajayasri/movie-review-app/issues"
+  },
+  "homepage": "https://github.com/manasajayasri/movie-review-app#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
