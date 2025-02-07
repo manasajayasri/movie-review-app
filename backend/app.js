@@ -1,7 +1,11 @@
 const express = require("express");
 const userRouter = require("./routes/user");
+const { default: mongoose } = require("mongoose");
+require("./db");
+const PORT = 8000;
 
 const app = express();
+app.use(express.json());
 app.use("/api/user", userRouter);
 
 app.get("/about", (req, res) => {
@@ -9,5 +13,5 @@ app.get("/about", (req, res) => {
 });
 
 app.listen(8000, () => {
-  console.log("The port is listening on port 8000");
+  console.log(`Server running on port ${PORT}`);
 });
