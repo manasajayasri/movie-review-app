@@ -3,8 +3,10 @@ const morgan = require("morgan");
 
 const userRouter = require("./routes/user");
 const { default: mongoose } = require("mongoose");
+require("dotenv").config(); //FAM. I loaded this after ./db, and it crashed the app. FAMM. 10 min of my life gone fo dis.
 require("./db");
 const PORT = 8000;
+// console.log("MONGO_URI:", process.env.MONGO_URI); //Debug
 
 const app = express();
 app.use(express.json());
