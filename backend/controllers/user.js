@@ -1,4 +1,4 @@
-const crypto = require("crypto");
+const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 const EmailVerificationToken = require("../models/emailVerificationToken");
 
@@ -204,4 +204,27 @@ exports.resetPassword = async (req, res) => {
     message:
       "Your password has been reset. Please continue to sign in to use your password",
   });
+};
+
+exports.signIn = async (req, res) => {
+  const { email, password } = req.body;
+
+  const user = await User.findOne({ email });
+  if (!user)
+    return sendError(
+      res,
+      "Email or password you have entered does not match our records"
+    );
+
+  const { _id, name } = user;
+
+  const matched = await user.comparePassword(password);
+  if (!matched) return sendError(res, "Email/Password is incorrect!");
+
+  const jwtToken = jwt.sign(
+    { userId: _id },
+    "skdfjbwehskibidi8skfhnsoesafdew45ghrh6"
+  );
+
+  res.json({ user: { id: _id, name, email, token: jwtToken } });
 };
