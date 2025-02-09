@@ -1,7 +1,8 @@
 const express = require("express");
+require("express-async-errors");
 const morgan = require("morgan");
-
 const userRouter = require("./routes/user");
+const { errorHandler } = require("./middlewares/error");
 const { default: mongoose } = require("mongoose");
 require("dotenv").config(); //FAM. I loaded this after ./db, and it crashed the app. FAMM. 10 min of my life gone fo dis.
 require("./db");
@@ -13,6 +14,8 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 app.use("/api/user", userRouter);
+
+app.use(errorHandler);
 
 // app.post(
 //   "/sign-in",
