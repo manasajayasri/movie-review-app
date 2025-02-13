@@ -104,7 +104,7 @@ exports.resendEmailVerificationToken = async (req, res) => {
     owner: userId,
   });
   if (alreadyHasToken)
-    return sendError(res, "a new OTP can be requested after an hour");
+    return sendError(res, "A new OTP can be requested after an hour.");
 
   //Generate 6 Digit OTP
   let OTP = generateOTP();
